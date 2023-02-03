@@ -1,0 +1,19 @@
+<p>Add New Country</p>
+
+<form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+
+    <label for="name">Name: </label>
+    <input class="form-control" id="name" type="text" formControlName="Name">
+
+    <label for="flag">Flag: </label>
+    <input class="form-control" id="flag" type="text" formControlName="Flag">
+
+    <label for="area">Area: </label>
+    <input class="form-control" id="area" type="number" formControlName="Area">
+
+    <label for="population">Population: </label>
+    <input class="form-control" id="population" type="number" formControlName="Population">
+
+    <p>Complete the form to enable button.</p>
+    <button class="btn btn-primary" type="submit" [disabled]="!inputForm.valid">Submit</button>
+</form>
