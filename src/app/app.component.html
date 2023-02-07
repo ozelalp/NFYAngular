@@ -3,14 +3,16 @@
 <div class="container">
 
     <!-- <span>Merhaba {{fullName}}</span> -->
-    <app-country-adder (newCountryEvent)="addCountryOutputEvent($event)"></app-country-adder>
+    <app-country-table [countryList]="COUNTRIES"
+        (selectCountryEvent)="onSelectCountryEvent($event)"></app-country-table>
     <br />
-    <app-country-table [countryList]="COUNTRIES"></app-country-table>
+    <app-country-adder [countrySelection]="selectedCountry"
+        (newCountryEvent)="addCountryOutputEvent($event)"></app-country-adder>
     <!-- <app-country-table [countryList]="getCountry()"></app-country-table> -->
 
     <!-- <app-ng-bootstrap-accordion></app-ng-bootstrap-accordion>
     <app-ng-bootstrap-accordion></app-ng-bootstrap-accordion>
     <app-ng-bootstrap-accordion></app-ng-bootstrap-accordion> -->
 
-    <button class="btn btn-primary" (click)="addCountry($event)">Add Country</button>
+    <!-- <button class="btn btn-primary" (click)="addCountry($event)">Add Country</button> -->
 </div>

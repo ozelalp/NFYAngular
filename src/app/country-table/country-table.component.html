@@ -1,16 +1,16 @@
-<p>Table of Countries</p>
+<p><strong>Table of Countries</strong></p>
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">Id</th>
             <th scope="col">Country</th>
             <th scope="col">Area</th>
             <th scope="col">Population</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let country of countryList; index as i">
-            <th scope="row">{{ i + 1 }}</th>
+        <tr *ngFor="let country of countryList;" (dblclick)="onDoubleClick(country.id)">
+            <th scope="row">{{ country.id }}</th>
             <td>
                 <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="me-2"
                     style="width: 20px" />

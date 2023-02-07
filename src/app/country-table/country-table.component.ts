@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Country } from '../model/model';
 
 @Component({
@@ -8,8 +8,13 @@ import { Country } from '../model/model';
 })
 export class CountryTableComponent implements OnInit {
   @Input() countryList: Country[];
+  @Output() selectCountryEvent = new EventEmitter<number>();
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  onDoubleClick(eventArg: number) {
+    this.selectCountryEvent.emit(eventArg);
+  }
 }

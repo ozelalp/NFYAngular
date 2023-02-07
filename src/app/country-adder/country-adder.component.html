@@ -1,6 +1,8 @@
 <p>Add New Country</p>
 
 <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+    <label for="id">ID: </label>
+    <input readonly class="form-control" id="id" type="text" formControlName="Id">
 
     <label for="name">Name: </label>
     <input class="form-control" id="name" type="text" formControlName="Name">
