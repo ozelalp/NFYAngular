@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "dvSQ2rRRRVkJ632zxjumvHrm70dn+Uv0THevaSWnttQ=",
+  "Source": "NFY.Web.RestAPI",
+  "BasePath": "_content/NFY.Web.RestAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

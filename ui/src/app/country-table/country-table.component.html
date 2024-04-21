@@ -18,6 +18,7 @@
             </td>
             <td>{{ country.area }}</td>
             <td>{{ country.population | number }}</td>
+            <td><button class="btn-primary" (click)="onDoubleClick(country.id)">Country Detail</button>
         </tr>
     </tbody>
 </table>

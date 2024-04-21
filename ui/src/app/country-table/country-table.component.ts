@@ -14,7 +14,7 @@ export class CountryTableComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onDoubleClick(eventArg: number) {
-    this.selectCountryEvent.emit(eventArg);
+  onDoubleClick(id: number) {
+    this.selectCountryEvent.emit(id);
   }
 }

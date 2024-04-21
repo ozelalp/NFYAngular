@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\NFY.Web.RestAPI.props" />
+</Project>

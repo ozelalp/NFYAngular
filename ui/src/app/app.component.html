@@ -3,7 +3,7 @@
 <div class="container">
 
     <!-- <span>Merhaba {{fullName}}</span> -->
-    <app-country-table [countryList]="COUNTRIES"
+    <app-country-table [countryList]="countryList"
         (selectCountryEvent)="onSelectCountryEvent($event)"></app-country-table>
     <br />
     <app-country-adder [countrySelection]="selectedCountry"
