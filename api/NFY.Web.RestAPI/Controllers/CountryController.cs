@@ -26,5 +26,27 @@ namespace NFY.Web.RestAPI.Controllers
         {
             return Ok(this.Countries);
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<Country> GetCountryById(int Id)
+        {
+            return Ok(this.Countries.FirstOrDefault(f => f.Id == Id));
+        }
+
+        [HttpPost()]
+        public ActionResult<Country> AddCountry(Country country)
+        {
+            this.Countries.Add(country);
+            return Ok(country);
+        }
+
+        [HttpPut()]
+        public ActionResult<Country> UpdateCountry(Country country)
+        {
+            this.Countries[this.Countries.FindIndex(f => f.Id == country.Id)] = country;
+
+            return Ok(country);
+        }
+
     }
 }

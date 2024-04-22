@@ -8,6 +8,7 @@ import { NgBootstrapAccordionComponent } from './ng-bootstrap-accordion/ng-boots
 import { CountryTableComponent } from './country-table/country-table.component';
 import { CountryAdderComponent } from './country-adder/country-adder.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     CountryTableComponent,
     CountryAdderComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CountryApiService } from './api-service.service';
+// import { CountryApiService } from './api-service.service';
+import { CountryApiHttpService } from './country-api-http-service.service';
 import { Country, DEFAULTID } from './model/model';
 
 @Component({
@@ -44,24 +45,32 @@ export class AppComponent implements OnInit {
   title = 'NFYAngular';
   selectedCountry?: Country;
 
-  constructor(private countryApiService: CountryApiService) {}
+  //constructor(private countryApiService: CountryApiService) {}
+  constructor(private countryApiHttpService: CountryApiHttpService) {}
   ngOnInit(): void {
-    this.setCountries();
-  }
-
-  public setCountries() {
-    this.countryApiService.getCountries().then((r) => {
+    this.countryApiHttpService.getCountries().subscribe((r) => {
       this.countryList = r;
     });
   }
 
+  // public setCountries() {
+  //   this.countryApiService.getCountries().then((r) => {
+  //     this.countryList = r;
+  //   });
+  // }
+
   public addCountryOutputEvent(newCountry: Country) {
     if (newCountry.id == DEFAULTID) {
       newCountry.id = Math.max(...this.countryList.map((o) => o.id)) + 1;
-      this.countryList.push(newCountry);
+      this.countryApiHttpService.addCountry(newCountry).subscribe((s) => {
+        this.countryList.push(newCountry);
+      });
     } else {
       let ind = this.countryList.findIndex((f) => f.id == newCountry.id);
-      this.countryList[ind] = newCountry;
+      this.countryApiHttpService.updateCountry(newCountry).subscribe((s) => {
+        this.countryList[ind] = newCountry;
+      });
+
       // this.COUNTRIES[ind].name = newCountry.name;
       // this.COUNTRIES[ind].flag = newCountry.flag;
       // this.COUNTRIES[ind].area = newCountry.area;
@@ -69,21 +78,25 @@ export class AppComponent implements OnInit {
     }
   }
 
-  public addCountry(eventArgs: MouseEvent) {
-    alert(`${eventArgs.offsetX}`);
+  // public addCountry(eventArgs: MouseEvent) {
+  //   alert(`${eventArgs.offsetX}`);
 
-    let newCountry: Country = {
-      id: 99999,
-      name: 'Turkey',
-      flag: 'TurkishFlag',
-      area: 15,
-      population: 10000,
-    };
+  //   let newCountry: Country = {
+  //     id: 99999,
+  //     name: 'Turkey',
+  //     flag: 'TurkishFlag',
+  //     area: 15,
+  //     population: 10000,
+  //   };
 
-    this.countryList.push(newCountry);
-  }
+  //   this.countryApiHttpService.addCountry(newCountry)
+  //   this.countryList.push(newCountry);
+  // }
 
   onSelectCountryEvent(eventArg: number) {
-    this.selectedCountry = this.countryList.find((f) => f.id == eventArg);
+    this.countryApiHttpService.getCountryById(eventArg).subscribe((s) => {
+      this.selectedCountry = s;
+    });
+    // this.selectedCountry = this.countryList.find((f) => f.id == eventArg);
   }
 }
